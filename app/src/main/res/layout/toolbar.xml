@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/tools"
-    android:background="#00BCDC"
+    android:background="#003865"
     android:minHeight="?attr/actionBarSize"
     android:fitsSystemWindows="true"
     android:id="@+id/toolBar"
@@ -14,12 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Asuisstant"
             android:id="@+id/mainTitle"
-            android:textSize="30sp"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
             android:layout_centerInParent="true" />
 
     </RelativeLayout>

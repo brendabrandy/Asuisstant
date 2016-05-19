@@ -33,9 +33,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager)findViewById(R.id.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.addFragments(new SocialFragment(),"Social");
         viewPagerAdapter.addFragments(new MeetingFragment(),"Meetings");
-
+        viewPagerAdapter.addFragments(new SocialFragment(),"Social");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -46,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             int tabChildsCount = vgTab.getChildCount();
             for (int i = 0; i < tabChildsCount; i++) {
                 View tabViewChild = vgTab.getChildAt(i);
+
             }
         }
 
