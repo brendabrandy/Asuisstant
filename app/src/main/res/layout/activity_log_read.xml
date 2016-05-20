@@ -123,18 +123,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Notes"
+        android:text="Summary"
         android:textColor="#003865"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
         android:layout_below="@+id/repLabel"
-        android:id="@+id/notes"
+        android:id="@+id/summary"
         android:layout_centerHorizontal="true"
         />
 
     <TextView
         android:id="@+id/line2"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:paddingTop="5dip"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/summary"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#000" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/line2"
+        android:id="@+id/summarytable"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        >
+    </ListView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Notes"
+        android:textColor="#003865"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:layout_below="@+id/summarytable"
+        android:id="@+id/notes"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/line3"
         style="?android:attr/listSeparatorTextViewStyle"
         android:paddingTop="5dip"
         android:gravity="center_horizontal"
@@ -146,9 +183,10 @@
         android:background="#000" />
 
     <TextView
+        android:id="@+id/notesText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line2"
+        android:layout_below="@+id/line3"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
