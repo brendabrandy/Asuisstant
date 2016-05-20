@@ -15,7 +15,75 @@ import javax.net.ssl.HttpsURLConnection;
 public class CallDB {
     static String  url_address = "http://b343c848.ngrok.io/";
     public static void main(String[] args) {
-        insertTable_log(2,"Shalin","Facebook","Jim","2016-05-14 04:15:23",true,"GOOG,3;APPL,2","Twas fun");
+        updateTable_log(4,"GOOG,4;","World ELLO!");
+    }
+
+
+    public static void createMeetings(){
+        insertTable_log(1,
+                "Yash",
+                "Facebook",
+                "Jim",
+                "2016-05-14 04:15:23",
+                false,
+                "",
+                "");
+        insertTable_log(2,
+                "Yash",
+                "Google",
+                "Dave",
+                "2016-02-14 13:15:23",
+                false,
+                "",
+                "");
+        insertTable_log(3,
+                "Yash",
+                "Suisse",
+                "Mike",
+                "2016-11-14 04:00:23",
+                false,
+                "",
+                "");
+        insertTable_log(4,
+                "Yash",
+                "Amazon",
+                "Susan",
+                "2015-01-14 08:00:15",
+                false,
+                "",
+                "");
+        insertTable_log(5,
+                "Brenda",
+                "Delta",
+                "Sandeep",
+                "2013-11-12 08:00:23",
+                false,
+                "",
+                "");
+        insertTable_log(6,
+                "Brenda",
+                "Chase",
+                "Hilary",
+                "2016-08-10 09:00:23",
+                false,
+                "",
+                "");
+        insertTable_log(7,
+                "Brenda",
+                "Microsoft",
+                "Cory",
+                "2020-01-14 11:00:23",
+                false,
+                "",
+                "");
+        insertTable_log(8,
+                "Brenda",
+                "LG",
+                "Bob",
+                "2015-05-14 11:02:23",
+                false,
+                "",
+                "");
     }
     public static String getTable(String table){
         String table_data = "";
@@ -38,18 +106,6 @@ public class CallDB {
             POST += "false";
         }
         POST = POST + "&ticker_sentiment=" + ticker_sentiment + "&notes=" + notes;
-/*
-        POST = "{id:" + Integer.toString(id) + ",employee:" + employee + ",client:" + client
-                + ",rep:" + rep + ",datatime:" + datetime + ",done:";
-        if (done==true){
-            POST += "true";
-        }
-        else{
-            POST += "false";
-        }
-        POST = POST + ",ticket_sentiment:" + ticker_sentiment + ",notes:" + notes + "}";
-        */
-        System.out.println(POST);
         try {
             URL url = new URL( "http://b343c848.ngrok.io/log_write");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -62,6 +118,46 @@ public class CallDB {
 
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.writeBytes( "log_write?" + POST );
+            wr.flush();
+            wr.close();
+
+            int responseCode = con.getResponseCode();
+            System.out.println("POST Response Code :: " + responseCode);
+
+            if (responseCode == HttpURLConnection.HTTP_OK) { //success
+                BufferedReader in = new BufferedReader(new InputStreamReader(
+                        con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                // print result
+                System.out.println(response.toString());
+            } else {
+                System.out.println("POST request not worked");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    public static void updateTable_log(int id, String ticker_sentiment, String notes){
+        String POST = "id=" + Integer.toString(id) + "&ticker_sentiment=" + ticker_sentiment + "&notes=" + notes + "&done=true";
+        try {
+            URL url = new URL( "http://b343c848.ngrok.io/log_update");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setDoOutput(true);
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Accept-Charset","UTF-8");
+            con.setReadTimeout(10000);
+            con.setConnectTimeout(15000);
+            con.connect();
+
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes( "log_update?" + POST );
             wr.flush();
             wr.close();
 
