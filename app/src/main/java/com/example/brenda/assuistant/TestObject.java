@@ -1,33 +1,23 @@
 package com.example.brenda.assuistant;
 
 import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Brenda on 5/19/2016.
  */
 public class TestObject {
 
-    private int showCaseMonth;
-    private String showCaseDay;
+    private String showCaseDateTime;
     private String showCaseClient;
     private String showCasePerson;
-    private String showCaseTime;
-    
-    public int getShowCaseMonth() {
-        return showCaseMonth;
+
+    public String getShowCaseDateTime() {
+        return showCaseDateTime;
     }
 
-    public void setShowCaseMonth(int showCaseMonth) {
-
-        this.showCaseMonth = showCaseMonth;
-    }
-
-    public String getShowCaseDay() {
-        return showCaseDay;
-    }
-
-    public void setShowCaseDay(String showCaseDay) {
-        this.showCaseDay = showCaseDay;
+    public void setShowCaseDateTime(String showCaseDateTime) {
+        this.showCaseDateTime = showCaseDateTime;
     }
 
     public String getShowCaseClient() {
@@ -46,11 +36,4 @@ public class TestObject {
         this.showCasePerson = showCasePerson;
     }
 
-    public String getShowCaseTime() {
-        return showCaseTime;
-    }
-
-    public void setShowCaseTime(String showCaseTime) {
-        this.showCaseTime = showCaseTime;
-    }
 }

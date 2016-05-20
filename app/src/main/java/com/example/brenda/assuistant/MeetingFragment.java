@@ -3,6 +3,7 @@ package com.example.brenda.assuistant;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,9 +29,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.text.DateFormatSymbols;
+import java.util.Locale;
 
 
 public class MeetingFragment extends Fragment {
@@ -82,7 +88,7 @@ public class MeetingFragment extends Fragment {
 
             String jsonString = null;
             try {
-                InputStream is = getActivity().getAssets().open("socialSample.json");
+                InputStream is = getActivity().getAssets().open("meetingSample.json");
                 int size = is.available();
                 byte[] buffer = new byte[size];
                 is.read(buffer);
@@ -98,11 +104,9 @@ public class MeetingFragment extends Fragment {
                     //to the jsonobject
                     JSONObject childObject = parentArray.getJSONObject(i);
                     TestObject testObject = new TestObject();
-                    testObject.setShowCaseMonth(childObject.getInt("Month"));
-                    testObject.setShowCaseDay(childObject.getString("Date"));
+                    testObject.setShowCaseDateTime(childObject.getString("DateTime"));
                     testObject.setShowCaseClient(childObject.getString("Client"));
                     testObject.setShowCasePerson(childObject.getString("Person"));
-                    testObject.setShowCaseTime(childObject.getString("Hour"));
                     testObjectList.add(testObject);
                 }
             } catch (IOException ex) {
@@ -161,14 +165,27 @@ public class MeetingFragment extends Fragment {
             jsonPerson = (TextView) convertView.findViewById(R.id.showCasePerson);
             jsonTime = (TextView) convertView.findViewById(R.id.showCaseTime);
 
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
 
+            try{
+                cal.setTime(sdf.parse(ListObject.get(position).getShowCaseDateTime()));
+                jsonMonth.setText(new SimpleDateFormat("MMM").format(cal.get(Calendar.MONTH)));
+                jsonDay.setText(new SimpleDateFormat("dd").format(cal.get(Calendar.DATE)));
+            }catch(ParseException e){
+                e.printStackTrace();
+            }
 
-            jsonMonth.setText(new DateFormatSymbols().getMonths()[ListObject.get(position).getShowCaseMonth()-1]);
-            jsonDay.setText(ListObject.get(position).getShowCaseDay());
             jsonClient.setText(ListObject.get(position).getShowCaseClient());
             jsonPerson.setText(ListObject.get(position).getShowCasePerson());
-            jsonTime.setText(ListObject.get(position).getShowCaseTime());
 
+            if (Calendar.getInstance().after(cal)){
+                jsonMonth.setTextColor(Color.RED);
+                jsonDay.setTextColor(Color.RED);
+            }else{
+                jsonMonth.setTextColor(Color.GREEN);
+                jsonDay.setTextColor(Color.GREEN);
+            }
 
             return convertView;
         }
