@@ -51,6 +51,9 @@ public class MeetingFragment extends Fragment {
     ListView listView;
     List <TestObject> result;
     ProgressDialog dialog;
+    DataBaseHelper db;
+    String user;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -64,6 +67,8 @@ public class MeetingFragment extends Fragment {
         dialog.setCancelable(false);
         dialog.setMessage("Loading. Please wait...");
 
+        db = new DataBaseHelper(getActivity().getApplicationContext());
+        user = (String) db.getUserDetails().get("name");
         //JsonAdapter myAdapter = new JsonAdapter(getContext(), R.layout.listviewrow, result);
 
         new jsonTask().execute();
@@ -77,12 +82,16 @@ public class MeetingFragment extends Fragment {
                     i.putExtra("Client",o.getShowCaseClient());
                     i.putExtra("DateTime",o.getShowCaseDateTime());
                     i.putExtra("Person",o.getShowCasePerson());
+                    i.putExtra("Ticker_sentiment",o.getShowCasetickerSent());
+                    i.putExtra("notes",o.getShowCasenote());
                     startActivity(i);
                 }else {
                     Intent ii = new Intent(getActivity(), LogWriteActivity.class);
                     ii.putExtra("Client",o.getShowCaseClient());
                     ii.putExtra("DateTime",o.getShowCaseDateTime());
                     ii.putExtra("Person",o.getShowCasePerson());
+                    ii.putExtra("ID",o.getShowCaseid());
+                    ii.putExtra("Done",o.getShowCaseDone());
                     startActivity(ii);
                 }
             }
@@ -112,14 +121,10 @@ public class MeetingFragment extends Fragment {
 
             String jsonString = null;
             try {
-                InputStream is = getActivity().getAssets().open("meetingSample.json");
-                int size = is.available();
-                byte[] buffer = new byte[size];
-                is.read(buffer);
-                is.close();
-                jsonString = new String(buffer, "UTF-8");
+                jsonString = CallDB.getTable("log");
+
                 JSONObject reader = new JSONObject(jsonString);
-                JSONArray parentArray = reader.getJSONArray("meetings");
+                JSONArray parentArray = reader.getJSONArray("rows");
                 //String finalString = meetings.toString();
                 //Log.d("MEETING FRAGMENT", finalString);
                 //JSONArray parentArray = new JSONArray(finalString);//the json returned is an array
@@ -128,14 +133,18 @@ public class MeetingFragment extends Fragment {
                     //to the jsonobject
                     JSONObject childObject = parentArray.getJSONObject(i);
                     TestObject testObject = new TestObject();
-                    testObject.setShowCaseDateTime(childObject.getString("DateTime"));
-                    testObject.setShowCaseClient(childObject.getString("Client"));
-                    testObject.setShowCasePerson(childObject.getString("Person"));
-                    testObject.setShowCaseDone(childObject.getBoolean("Done"));
-                    testObjectList.add(testObject);
+                    testObject.setShowCaseDateTime(childObject.getString("datetime"));
+                    testObject.setShowCaseClient(childObject.getString("client"));
+                    testObject.setShowCasePerson(childObject.getString("rep"));
+                    testObject.setShowCaseDone(childObject.getBoolean("done"));
+                    testObject.setShowCaseid(childObject.getInt("id"));
+                    testObject.setShowCasetickerSent(childObject.getString("ticker_sentiment"));
+                    testObject.setShowCasenote(childObject.getString("notes"));
+
+                    if (user.equals(childObject.getString("employee"))){
+                        testObjectList.add(testObject);
+                    }
                 }
-            } catch (IOException ex) {
-                ex.printStackTrace();
             } catch (JSONException ex){
                 ex.printStackTrace();
             }
