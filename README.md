@@ -15,7 +15,7 @@ Our android application allows users to log notes about their meetings and write
 
 ## Software Used
 * Android Application
-** Built using Andriod Studio (Java)
+  * Built using Andriod Studio (Java)
 * Web Server
   * Built in NodeJS 
   * Using package ngrok to tunnel HTTP traffic to localhost running HTTPServer.js
