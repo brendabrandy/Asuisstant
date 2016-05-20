@@ -71,12 +71,11 @@ dispatcher.onGet("/employee",function(req,res){
 	});
 }); 
 
-dispatcher.onPost("/test",function(req,res){
-	var querydata = url.parse(req.url, true).query;
+dispatcher.onPost("/log_write",function(req,res){
+	var querydata = url.parse(req.body, true).query;
 	var client = new pg.Client(conString);
 	querydata.id = parseInt(querydata.id);
 	var sql = SQL.insert('public.log').values(querydata).done();
-	console.log(sql);
 	var sql_script="";
 	for(var i = 0, len = sql.length; i<len;i++){
 		if(sql[i] == '\"' ){
