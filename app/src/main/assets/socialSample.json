@@ -1,0 +1,123 @@
+{"meetings": [
+    {
+      "Index": 1,
+      "Year": 2015,
+      "Month": 1,
+      "Date": 30,
+      "Ticker": "DRD",
+      "Client" : "Drdgold Ltd.",
+      "Person": "Geoffrey Gallagher",
+      "Hour": 18,
+      "Minute": 6,
+      "Seconds": 34
+    },
+    {
+      "Index": 2,
+      "Year": 2015,
+      "Month": 2,
+      "Date": 18,
+      "Ticker": "GSV",
+      "Client": "Gold Standard Ventures Corp",
+      "Person": "Kara McKay",
+      "Hour": 18,
+      "Minute": 49,
+      "Seconds": 19
+    },
+    {
+      "Index": 3,
+      "Year": 2015,
+      "Month": 3,
+      "Date": 30,
+      "Ticker": "RIC",
+      "Client": "Richmont Mines",
+      "Person": "James Davies",
+      "Hour": 18,
+      "Minute": 39,
+      "Seconds": 13
+    },
+    {
+      "Index": 4,
+      "Year": 2015,
+      "Month": 4,
+      "Date": 30,
+      "Ticker": "AG",
+      "Client": "First Majestic Silver",
+      "Person": "Mary Duke",
+      "Hour": 18,
+      "Minute": 58,
+      "Seconds": 35
+    },
+    {
+      "Index": 5,
+      "Year": 2015,
+      "Month": 5,
+      "Date": 30,
+      "Ticker":"MITK",
+      "Client": "Mitek Systems Inc",
+      "Person": "Dennis Horn",
+      "Hour": 18,
+      "Minute": 23,
+      "Seconds": 37
+    },
+    {
+      "Index": 6,
+      "Year": 2015,
+      "Month": 6,
+      "Date": 30,
+      "Ticker": "MUX",
+      "Client": "Mcewen Mining Inc",
+      "Person": "Douglas Underwood",
+      "Hour": 18,
+      "Minute": 6,
+      "Seconds": 50
+    },
+    {
+      "Index": 7,
+      "Year": 2015,
+      "Month": 7,
+      "Date": 19,
+      "Ticker":"GPL",
+      "Client": "Great Panther Silver Ltd",
+      "Person": "Rodney Spivey",
+      "Hour": 18,
+      "Minute": 55,
+      "Seconds": 24
+    },
+    {
+      "Index": 8,
+      "Year": 2015,
+      "Month": 8,
+      "Date": 30,
+      "Ticker": "LFVN",
+      "Client": "Lifevantage Cp Cmn",
+      "Person": "Brian Harrell",
+      "Hour": 18,
+      "Minute": 35,
+      "Seconds": 25
+    },
+    {
+      "Index": 9,
+      "Year": 2015,
+      "Month": 9,
+      "Date": 17,
+      "Ticker":"SKY",
+      "Client": "Skyline Corp",
+      "Person": "Marsha McLean",
+      "Hour": 18,
+      "Minute": 13,
+      "Seconds": 43
+    },
+    {
+      "Index": 10,
+      "Year": "2015",
+      "Month": 10,
+      "Date": 30,
+      "Ticker":"AAPL",
+      "Client": "Apple Inc",
+      "Person": "Rhonda Case",
+      "Hour": 18,
+      "Minute": 27,
+      "Seconds": 22
+    }
+  ]
+}

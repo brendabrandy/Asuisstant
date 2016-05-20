@@ -3,11 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.brenda.assuistant.MeetingFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_centerHorizontal="true"
+        android:id="@+id/jsonList"
+        android:layout_above="@+id/backButton1">
+    </ListView>
+
 
 </FrameLayout>
