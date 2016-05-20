@@ -100,6 +100,37 @@ dispatcher.onPost("/log_write",function(req,res){
 	res.end(JSON.stringify(querydata));
 });
 
+dispatcher.onPost("/log_update",function(req,res){
+	var querydata = url.parse(req.body, true).query;
+	var client = new pg.Client(conString);
+	querydata.id = parseInt(querydata.id);
+	var sql = SQL.update('public.log').set(querydata).where({
+		'id': ['=',querydata.id]
+		}).done();
+	var sql_script="";
+	for(var i = 0, len = sql.length; i<len;i++){
+		if(sql[i] == '\"' ){
+			sql_script = sql_script + '\'';
+		}
+		else{
+			sql_script=sql_script+sql[i];
+		}
+	}
+	client.connect(function(err) {
+		if(err) {
+			return console.error('could not connect to postgres', err);
+		}
+		client.query(sql_script, function(err, result) {
+			if(err) {
+				return console.error('error running query', err);
+			}
+			client.end();
+		});
+	});
+	res.writeHead(200, {'Content-Type': 'application/json'});
+	res.end(JSON.stringify(querydata));
+});
+
 //Create a server
 var server = http.createServer(handleRequest);
 
