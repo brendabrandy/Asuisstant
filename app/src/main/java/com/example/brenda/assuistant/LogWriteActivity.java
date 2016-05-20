@@ -15,8 +15,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,7 +106,7 @@ public class LogWriteActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             String delims = "[@]+";
             String[] tokens = log.split(delims);
-            String [] tokens2 = new String[100];
+            String [] tokens2;
             String [] tokens3 = new String[100];
             int j =0;
             for(int i=1;i<tokens.length;i++){
@@ -113,29 +115,26 @@ public class LogWriteActivity extends AppCompatActivity {
                 tokens3[j] = tokens2[0];
                 j += 1;
             }
-
-
             ArrayList <String> poslist = new ArrayList<>();
             ArrayList <String> neglist = new ArrayList<>();
-            FileReader in;
-            BufferedReader br;
-            FileReader in2;
-            BufferedReader br2;
+            BufferedReader br = null;
+            BufferedReader br2 = null;
             try {
-                in = new FileReader("negative.txt");
-                br = new BufferedReader(in);
-                in2 = new FileReader("positive.txt");
-                br2 = new BufferedReader(in2);
+                br = new BufferedReader(new InputStreamReader(getAssets().open("negative.txt")));
+                br2 = new BufferedReader(new InputStreamReader(getAssets().open("positive.txt")));
                 String line;
                 while((line = br.readLine()) != null) {
-                    poslist.add(line);
+                    System.out.println(line);
+                    neglist.add(line);
                 }
                 while((line = br2.readLine()) != null) {
-                    neglist.add(line);
+                    poslist.add(line);
                 }
             }
             catch (IOException ex){
+                System.out.print("IOException");
             }
+
             String delims3="[ .,!?;:]+";
             String [] tokens4 = log.split(delims3);
             int sentiment=0;
@@ -165,7 +164,6 @@ public class LogWriteActivity extends AppCompatActivity {
             else if (sentiment>=3){
                 sentiment = 5;
             }
-
             String token = "";
             for (int i=0;i< j;i++){
                 token+= tokens3[i]+','+Integer.toString(sentiment)+';';
