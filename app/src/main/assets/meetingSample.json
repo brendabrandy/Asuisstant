@@ -1,0 +1,82 @@
+{"meetings": [
+    {
+      "Index": 1,
+      "Ticker": "DRD",
+      "Client" : "Drdgold Ltd.",
+      "Person": "Geoffrey Gallagher",
+      "DateTime":"2016-01-30 18:06:34",
+      "Done": true
+    },
+    {
+      "Index": 2,
+      "Ticker": "GSV",
+      "Client": "Gold Standard Ventures Corp",
+      "Person": "Kara McKay",
+      "DateTime":"2016-02-18 18:49:19",
+      "Done": false
+    },
+    {
+      "Index": 3,
+      "Ticker": "RIC",
+      "Client": "Richmont Mines",
+      "Person": "James Davies",
+      "DateTime":"2016-03-18 18:49:19",
+      "Done": false
+    },
+    {
+      "Index": 4,
+      "Ticker": "AG",
+      "Client": "First Majestic Silver",
+      "Person": "Mary Duke",
+      "DateTime":"2016-04-30 18:58:35",
+      "Done": false
+    },
+    {
+      "Ticker":"MITK",
+      "Client": "Mitek Systems Inc",
+      "Person": "Dennis Horn",
+      "DateTime":"2016-05-30 18:23:37",
+      "Done": false
+    },
+    {
+      "Index": 6,
+      "Ticker": "MUX",
+      "Client": "Mcewen Mining Inc",
+      "Person": "Douglas Underwood",
+      "DateTime":"2016-06-30 18:06:50",
+      "Done": false
+    },
+    {
+      "Index": 7,
+      "Ticker":"GPL",
+      "Client": "Great Panther Silver Ltd",
+      "Person": "Rodney Spivey",
+      "DateTime":"2016-07-19 18:55:24",
+      "Done": false
+    },
+    {
+      "Index": 8,
+      "Ticker": "LFVN",
+      "Client": "Lifevantage Cp Cmn",
+      "Person": "Brian Harrell",
+      "DateTime":"2016-08-17 18:13:43",
+      "Done": false
+    },
+    {
+      "Index": 9,
+      "Ticker":"SKY",
+      "Client": "Skyline Corp",
+      "Person": "Marsha McLean",
+      "DateTime":"2016-09-17 18:13:43",
+      "Done": false
+    },
+    {
+      "Index": 10,
+      "Ticker":"AAPL",
+      "Client": "Apple Inc",
+      "Person": "Rhonda Case",
+      "DateTime":"2016-10-30 18:27:22",
+      "Done": false
+    }
+  ]
+}
