@@ -19,7 +19,7 @@ Our android application allows users to log notes about their meetings and write
 * Android Application
   * Built using Andriod Studio (Java)
   * Utilized Fragments for displaying Meeting and Activity Feed tabs
-  * Used Async Java Functions to place database data into JSON and parse it to populate models
+  * Used Async Java Functions for database queries, parsed data to populate models
   * Login information stored in SQL lite Database for continuous verification of Database, for ease of user
   * Google Speak implemented for speech recognition
   * Sentiment Analysis done through scraping of positive&negative word dictionaries; parsed log compared with dictionaries yielding sentiment
