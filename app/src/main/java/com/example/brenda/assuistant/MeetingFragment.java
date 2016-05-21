@@ -80,6 +80,9 @@ public class MeetingFragment extends Fragment {
                     startActivity(i);
                 }else {
                     Intent ii = new Intent(getActivity(), LogWriteActivity.class);
+                    ii.putExtra("Client",o.getShowCaseClient());
+                    ii.putExtra("DateTime",o.getShowCaseDateTime());
+                    ii.putExtra("Person",o.getShowCasePerson());
                     startActivity(ii);
                 }
             }

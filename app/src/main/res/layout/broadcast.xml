@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.brenda.assuistant.LogWriteActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_height = "wrap_content"
+        android:layout_width = "match_parent"
+        android:id="@+id/include">
+
+        <include
+
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/toolbaractivity"
+            />
+    </android.support.design.widget.AppBarLayout>
+    <EditText
+        android:id="@+id/log_write"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:hint="Enter Activity Feed Post"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/include"
+        android:layout_above="@+id/button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BROADCAST"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="activitysubmit"/>
+
+
+</RelativeLayout>

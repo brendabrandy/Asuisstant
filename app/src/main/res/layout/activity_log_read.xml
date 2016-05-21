@@ -42,6 +42,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:textSize="10sp"
         android:background="#000" />
 
     <TextView
@@ -53,6 +54,7 @@
         android:layout_below="@+id/logistics"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
+        android:textSize="15sp"
         android:textColor="#003865"/>
 
     <TextView
@@ -64,6 +66,7 @@
         android:layout_below="@+id/logistics"
         android:layout_toRightOf="@+id/dateLabel"
         android:layout_marginTop="10dp"
+        android:textSize="15sp"
         android:layout_marginLeft="30dp"/>
 
     <TextView
@@ -76,6 +79,7 @@
         android:layout_marginTop="5dp"
         android:layout_alignRight="@+id/dateLabel"
         android:layout_alignEnd="@+id/dateLabel"
+        android:textSize="15sp"
         android:textColor="#003865"/>
 
     <TextView
@@ -87,6 +91,7 @@
         android:layout_below="@+id/dateLogRead"
         android:layout_toRightOf="@+id/clientLabel"
         android:layout_marginTop="5dp"
+        android:textSize="15sp"
         android:layout_marginLeft="30dp"/>
 
     <TextView
@@ -99,6 +104,7 @@
         android:layout_marginTop="5dp"
         android:layout_alignRight="@+id/dateLabel"
         android:layout_alignEnd="@+id/dateLabel"
+        android:textSize="15sp"
         android:textColor="#003865"/>
 
     <TextView
@@ -110,6 +116,7 @@
         android:layout_below="@+id/clientLogRead"
         android:layout_toRightOf="@+id/repLabel"
         android:layout_marginTop="5dp"
+        android:textSize="15sp"
         android:layout_marginLeft="30dp"/>
 
     <TextView
