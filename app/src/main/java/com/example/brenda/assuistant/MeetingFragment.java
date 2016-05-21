@@ -3,6 +3,7 @@ package com.example.brenda.assuistant;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -65,7 +67,23 @@ public class MeetingFragment extends Fragment {
         //JsonAdapter myAdapter = new JsonAdapter(getContext(), R.layout.listviewrow, result);
 
         new jsonTask().execute();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //bundle up the chosen object and send it to the next activity
+                TestObject o = (TestObject) parent.getItemAtPosition(position);
+                if (o.getShowCaseDone() == true){
+                    Intent i = new Intent(getActivity(), LogReadActivity.class);
+                    startActivity(i);
+                }else {
+                    Intent ii = new Intent(getActivity(), LogWriteActivity.class);
+                    startActivity(ii);
+                }
+            }
+        });
         return rootView;
+
+
     }
 
 
@@ -181,6 +199,9 @@ public class MeetingFragment extends Fragment {
                         jsonMonth.setTextColor(Color.RED);
                         jsonDay.setTextColor(Color.RED);
                     }
+                }else{
+                    jsonMonth.setTextColor(Color.parseColor("#003865"));
+                    jsonDay.setTextColor(Color.parseColor("#003865"));
                 }
             }catch(ParseException e){
                 e.printStackTrace();
