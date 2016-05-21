@@ -4,7 +4,7 @@
       "Ticker": "DRD",
       "Client" : "Drdgold Ltd.",
       "Person": "Geoffrey Gallagher",
-      "DateTime":"2015-01-30 18:06:34",
+      "DateTime":"2016-01-30 18:06:34",
       "Done": true
     },
     {
@@ -12,7 +12,7 @@
       "Ticker": "GSV",
       "Client": "Gold Standard Ventures Corp",
       "Person": "Kara McKay",
-      "DateTime":"2015-02-18 18:49:19",
+      "DateTime":"2016-02-18 18:49:19",
       "Done": false
     },
     {
@@ -20,7 +20,7 @@
       "Ticker": "RIC",
       "Client": "Richmont Mines",
       "Person": "James Davies",
-      "DateTime":"2015-03-18 18:49:19",
+      "DateTime":"2016-03-18 18:49:19",
       "Done": false
     },
     {
@@ -28,14 +28,14 @@
       "Ticker": "AG",
       "Client": "First Majestic Silver",
       "Person": "Mary Duke",
-      "DateTime":"2015-04-30 18:58:35",
+      "DateTime":"2016-04-30 18:58:35",
       "Done": false
     },
     {
       "Ticker":"MITK",
       "Client": "Mitek Systems Inc",
       "Person": "Dennis Horn",
-      "DateTime":"2015-05-30 18:23:37",
+      "DateTime":"2016-05-30 18:23:37",
       "Done": false
     },
     {
@@ -43,7 +43,7 @@
       "Ticker": "MUX",
       "Client": "Mcewen Mining Inc",
       "Person": "Douglas Underwood",
-      "DateTime":"2015-06-30 18:06:50",
+      "DateTime":"2016-06-30 18:06:50",
       "Done": false
     },
     {
@@ -51,7 +51,7 @@
       "Ticker":"GPL",
       "Client": "Great Panther Silver Ltd",
       "Person": "Rodney Spivey",
-      "DateTime":"2015-07-19 18:55:24",
+      "DateTime":"2016-07-19 18:55:24",
       "Done": false
     },
     {
@@ -59,7 +59,7 @@
       "Ticker": "LFVN",
       "Client": "Lifevantage Cp Cmn",
       "Person": "Brian Harrell",
-      "DateTime":"2015-08-17 18:13:43",
+      "DateTime":"2016-08-17 18:13:43",
       "Done": false
     },
     {
@@ -67,7 +67,7 @@
       "Ticker":"SKY",
       "Client": "Skyline Corp",
       "Person": "Marsha McLean",
-      "DateTime":"2015-09-17 18:13:43",
+      "DateTime":"2016-09-17 18:13:43",
       "Done": false
     },
     {
@@ -75,7 +75,7 @@
       "Ticker":"AAPL",
       "Client": "Apple Inc",
       "Person": "Rhonda Case",
-      "DateTime":"2015-10-30 18:27:22",
+      "DateTime":"2016-10-30 18:27:22",
       "Done": false
     }
   ]

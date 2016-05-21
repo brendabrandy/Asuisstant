@@ -12,6 +12,16 @@ public class TestObject {
     private String showCaseClient;
     private String showCasePerson;
 
+    public Boolean getShowCaseDone() {
+        return showCaseDone;
+    }
+
+    public void setShowCaseDone(Boolean showCaseDone) {
+        this.showCaseDone = showCaseDone;
+    }
+
+    private Boolean showCaseDone;
+
     public String getShowCaseDateTime() {
         return showCaseDateTime;
     }

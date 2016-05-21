@@ -107,6 +107,7 @@ public class MeetingFragment extends Fragment {
                     testObject.setShowCaseDateTime(childObject.getString("DateTime"));
                     testObject.setShowCaseClient(childObject.getString("Client"));
                     testObject.setShowCasePerson(childObject.getString("Person"));
+                    testObject.setShowCaseDone(childObject.getBoolean("Done"));
                     testObjectList.add(testObject);
                 }
             } catch (IOException ex) {
@@ -166,26 +167,27 @@ public class MeetingFragment extends Fragment {
             jsonTime = (TextView) convertView.findViewById(R.id.showCaseTime);
 
             Calendar cal = Calendar.getInstance();
+            Calendar cal2 = Calendar.getInstance();
             SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-
             try{
                 cal.setTime(sdf.parse(ListObject.get(position).getShowCaseDateTime()));
-                jsonMonth.setText(new SimpleDateFormat("MMM").format(cal.get(Calendar.MONTH)));
-                jsonDay.setText(new SimpleDateFormat("dd").format(cal.get(Calendar.DATE)));
+                jsonMonth.setText(new DateFormatSymbols().getMonths()[cal.get(Calendar.MONTH)]);
+                jsonDay.setText(Integer.toString(cal.get(Calendar.DAY_OF_MONTH)));
+                if (cal.before(cal2)){
+                    if (ListObject.get(position).getShowCaseDone() == true){
+                        jsonMonth.setTextColor(Color.GREEN);
+                        jsonDay.setTextColor(Color.GREEN);
+                    }else{
+                        jsonMonth.setTextColor(Color.RED);
+                        jsonDay.setTextColor(Color.RED);
+                    }
+                }
             }catch(ParseException e){
                 e.printStackTrace();
             }
 
             jsonClient.setText(ListObject.get(position).getShowCaseClient());
             jsonPerson.setText(ListObject.get(position).getShowCasePerson());
-
-            if (Calendar.getInstance().after(cal)){
-                jsonMonth.setTextColor(Color.RED);
-                jsonDay.setTextColor(Color.RED);
-            }else{
-                jsonMonth.setTextColor(Color.GREEN);
-                jsonDay.setTextColor(Color.GREEN);
-            }
 
             return convertView;
         }
