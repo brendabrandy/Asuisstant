@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,7 +41,7 @@ public class SocialFragment extends Fragment {
     ListView listView;
     List <TestObject2> result;
     ProgressDialog dialog;
-
+    Button btnRefresh;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //TODO Auto-generated method stub
@@ -49,15 +50,18 @@ public class SocialFragment extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.jsonList);
 
         //Set up progress dialog as json is being retrieved
-        dialog = new ProgressDialog(this.getActivity());
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        dialog.setMessage("Loading. Please wait...");
+        btnRefresh = (Button)rootView.findViewById(R.id.refresh);
+        btnRefresh.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                new jsonTask2().execute();
+            }
+        });
 
         new jsonTask2().execute();
 
         return rootView;
     }
+
 
     public class jsonTask2 extends AsyncTask<String, Void, List<TestObject2> > {
 
@@ -68,6 +72,10 @@ public class SocialFragment extends Fragment {
         protected void onPreExecute() {
             //Shows dialog box in async task
             super.onPreExecute();
+            dialog = new ProgressDialog(getActivity());
+            dialog.setIndeterminate(true);
+            dialog.setCancelable(false);
+            dialog.setMessage("Loading. Please wait...");
             dialog.show();
         }
 
