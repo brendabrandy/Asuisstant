@@ -83,6 +83,8 @@ public class MeetingFragment extends Fragment {
                     ii.putExtra("Client",o.getShowCaseClient());
                     ii.putExtra("DateTime",o.getShowCaseDateTime());
                     ii.putExtra("Person",o.getShowCasePerson());
+                    ii.putExtra("ID",o.getShowCaseid());
+                    ii.putExtra("Done",o.getShowCaseDone());
                     startActivity(ii);
                 }
             }
@@ -132,6 +134,8 @@ public class MeetingFragment extends Fragment {
                     testObject.setShowCaseClient(childObject.getString("Client"));
                     testObject.setShowCasePerson(childObject.getString("Person"));
                     testObject.setShowCaseDone(childObject.getBoolean("Done"));
+                    testObject.setShowCaseid(childObject.getInt("Index"));
+
                     testObjectList.add(testObject);
                 }
             } catch (IOException ex) {

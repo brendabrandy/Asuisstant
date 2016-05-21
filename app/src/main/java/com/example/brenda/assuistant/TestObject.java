@@ -8,9 +8,11 @@ import java.text.SimpleDateFormat;
  */
 public class TestObject {
 
+    private int showCaseid;
     private String showCaseDateTime;
     private String showCaseClient;
     private String showCasePerson;
+    private Boolean showCaseDone;
 
     public Boolean getShowCaseDone() {
         return showCaseDone;
@@ -20,7 +22,13 @@ public class TestObject {
         this.showCaseDone = showCaseDone;
     }
 
-    private Boolean showCaseDone;
+    public int getShowCaseid() {
+        return showCaseid;
+    }
+
+    public void setShowCaseid(int showCaseid) {
+        this.showCaseid = showCaseid;
+    }
 
     public String getShowCaseDateTime() {
         return showCaseDateTime;
@@ -47,3 +55,4 @@ public class TestObject {
     }
 
 }
+

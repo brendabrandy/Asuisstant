@@ -148,7 +148,7 @@
 
 
     <EditText
-        android:id="@+id/log_write"
+        android:id="@+id/activity_write"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:hint="Enter Meeting Notes (Use appropriate symbols to activate intellisense)"
@@ -158,6 +158,14 @@
         android:layout_marginLeft="10dp"
         android:layout_below="@+id/line2"
         android:layout_above="@+id/button" />
+
+    <AutoCompleteTextView android:id="@+id/autocomplete_tickerView"
+        android:completionThreshold="1"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="Trip Description (optional)"
+        android:lines="1" />
+
 
     <Button
         android:layout_width="wrap_content"
