@@ -168,5 +168,30 @@
         android:layout_centerHorizontal="true"
         android:onClick="logsubmit"/>
 
+    <!--
+<FrameLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <EditText
+        android:id="@+id/log_write"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:hint="Enter Meeting Notes (Use appropriate symbols to activate intellisense)"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/line2"
+        android:layout_above="@+id/button" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+   </FrameLayout>
+    -->
+
 
 </RelativeLayout>

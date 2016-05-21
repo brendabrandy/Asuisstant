@@ -58,6 +58,16 @@ public class LoginActivity extends AppCompatActivity{
             //return List of TestObjects
             String jsonString = CallDB.getTable("employee");
             Log.d("ASYNCTASK",jsonString);
+            try {
+                JSONObject reader = new JSONObject(jsonString);
+                JSONArray parentArray = reader.getJSONArray("rows");
+                //for (int i =0; i < parentArray.length(); i++){
+                //    if ()
+                //
+                //}
+            }catch(JSONException ex){
+                ex.printStackTrace();
+            }
             return false;
         }
 
