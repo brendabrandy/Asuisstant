@@ -13,7 +13,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 
 public class CallDB {
-    static String  url_address = "http://b343c848.ngrok.io/";
+    static String  url_address = "http://25989377.ngrok.io/";
     public static void main(String[] args) {
         updateTable_log(4,"GOOG,4;","World ELLO!");
     }
@@ -88,7 +88,7 @@ public class CallDB {
     public static String getTable(String table){
         String table_data = "";
         try {
-            URL url = new URL("http://b343c848.ngrok.io/" + table);
+            URL url = new URL("http://25989377.ngrok.io/" + table);
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
             table_data = br.readLine();
         } catch (Exception ex) {
@@ -107,7 +107,7 @@ public class CallDB {
         }
         POST = POST + "&ticker_sentiment=" + ticker_sentiment + "&notes=" + notes;
         try {
-            URL url = new URL( "http://b343c848.ngrok.io/log_write");
+            URL url = new URL( "http://25989377.ngrok.io/log_write");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setDoOutput(true);
             con.setRequestMethod("POST");

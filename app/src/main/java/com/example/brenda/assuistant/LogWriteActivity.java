@@ -46,6 +46,34 @@ public class LogWriteActivity extends AppCompatActivity {
         clientLogRead.setText(client);
         repLogRead.setText(rep);
 
+        /*
+        speech = SpeechRecognizer.createSpeechRecognizer(this);
+        speech.setRecognitionListener(this);
+        recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE,
+                "en");
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,
+                this.getPackageName());
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3);
+
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+                if (isChecked) {
+                    speech.startListening(recognizerIntent);
+                }
+                else {
+                    speech.stopListening();
+                }
+                }
+        });
+
+         */
+
     }
 
     public void logsubmit(View view){
@@ -85,7 +113,7 @@ public class LogWriteActivity extends AppCompatActivity {
                 token+= tokens3[i]+','+'0'+';';
             }
             Log.d("LOG WRITE",Integer.toString(id));
-            CallDB.updateTable_log(id,"GOOG,5;AAPL,1;",log);
+            CallDB.updateTable_log(id,token,log);
 
            return log;
         }
