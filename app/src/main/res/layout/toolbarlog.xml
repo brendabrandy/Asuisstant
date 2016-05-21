@@ -18,23 +18,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Asuisstant"
+            android:text="Meeting Log"
             android:id="@+id/back"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:layout_alignParentLeft="true" />
+            android:layout_centerInParent="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Meeting Log"
-            android:id="@+id/meetingLogTitle"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

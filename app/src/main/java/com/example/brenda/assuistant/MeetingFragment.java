@@ -74,6 +74,9 @@ public class MeetingFragment extends Fragment {
                 TestObject o = (TestObject) parent.getItemAtPosition(position);
                 if (o.getShowCaseDone() == true){
                     Intent i = new Intent(getActivity(), LogReadActivity.class);
+                    i.putExtra("Client",o.getShowCaseClient());
+                    i.putExtra("DateTime",o.getShowCaseDateTime());
+                    i.putExtra("Person",o.getShowCasePerson());
                     startActivity(i);
                 }else {
                     Intent ii = new Intent(getActivity(), LogWriteActivity.class);

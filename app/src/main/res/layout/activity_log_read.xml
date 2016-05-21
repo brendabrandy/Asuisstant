@@ -7,7 +7,8 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_height = "wrap_content"
-        android:layout_width = "match_parent">
+        android:layout_width = "match_parent"
+        android:id="@+id/view">
 
         <include
 
@@ -15,12 +16,134 @@
             android:layout_width="match_parent"
             layout="@layout/toolbarlog"
             />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="logRead"/>
     </android.support.design.widget.AppBarLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Logistics"
+        android:textColor="#003865"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:layout_below="@+id/view"
+        android:id="@+id/logistics"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/line"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:paddingTop="5dip"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/logistics"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Date: "
+        android:id="@+id/dateLabel"
+        android:layout_below="@+id/logistics"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="#003865"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="yyyy-mm-dd"
+        android:id="@+id/dateLogRead"
+        android:layout_below="@+id/logistics"
+        android:layout_toRightOf="@+id/dateLabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Client: "
+        android:id="@+id/clientLabel"
+        android:layout_below="@+id/dateLabel"
+        android:layout_marginTop="5dp"
+        android:layout_alignRight="@+id/dateLabel"
+        android:layout_alignEnd="@+id/dateLabel"
+        android:textColor="#003865"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Client"
+        android:id="@+id/clientLogRead"
+        android:layout_below="@+id/dateLogRead"
+        android:layout_toRightOf="@+id/clientLabel"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rep: "
+        android:id="@+id/repLabel"
+        android:layout_below="@+id/clientLabel"
+        android:layout_marginTop="5dp"
+        android:layout_alignRight="@+id/dateLabel"
+        android:layout_alignEnd="@+id/dateLabel"
+        android:textColor="#003865"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Representative"
+        android:id="@+id/repLogRead"
+        android:layout_below="@+id/clientLogRead"
+        android:layout_toRightOf="@+id/repLabel"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Notes"
+        android:textColor="#003865"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:layout_below="@+id/repLabel"
+        android:id="@+id/notes"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/line2"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:paddingTop="5dip"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/notes"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#000" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:text="NOTES"/>
 </RelativeLayout>
