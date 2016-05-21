@@ -78,14 +78,9 @@ public class SocialFragment extends Fragment {
 
             String jsonString = null;
             try {
-                InputStream is = getActivity().getAssets().open("socialSample.json");
-                int size = is.available();
-                byte[] buffer = new byte[size];
-                is.read(buffer);
-                is.close();
-                jsonString = new String(buffer, "UTF-8");
+                jsonString = CallDB.getTable("activity");
                 JSONObject reader = new JSONObject(jsonString);
-                JSONArray parentArray = reader.getJSONArray("social");
+                JSONArray parentArray = reader.getJSONArray("rows");
                 //String finalString = meetings.toString();
                 //Log.d("MEETING FRAGMENT", finalString);
                 //JSONArray parentArray = new JSONArray(finalString);//the json returned is an array
@@ -94,13 +89,11 @@ public class SocialFragment extends Fragment {
                     //to the jsonobject
                     JSONObject childObject = parentArray.getJSONObject(i);
                     TestObject2 testObject = new TestObject2();
-                    testObject.setUser(childObject.getString("User"));
-                    testObject.setContent(childObject.getString("Content"));
+                    testObject.setUser(childObject.getString("employee"));
+                    testObject.setContent(childObject.getString("content"));
                     testObjectList.add(testObject);
                 }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (JSONException ex){
+            }catch (JSONException ex){
                 ex.printStackTrace();
             }
             return testObjectList;

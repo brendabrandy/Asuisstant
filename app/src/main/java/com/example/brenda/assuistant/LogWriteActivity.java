@@ -103,16 +103,18 @@ public class LogWriteActivity extends AppCompatActivity {
             String[] tokens = log.split(delims);
             String [] tokens2 = new String[100];
             String [] tokens3 = new String[100];
+            int j =0;
             for(int i=1;i<tokens.length;i++){
                 String delims2 = "[ ]+";
                 tokens2 = tokens[i].split(delims2);
-                tokens3[i-1] = tokens2[0];
+                tokens3[j] = tokens2[0];
+                j += 1;
             }
-            String token = "blah";
-            for (int i=0;i<tokens3.length;i++){
+            String token = "";
+            for (int i=0;i< j;i++){
                 token+= tokens3[i]+','+'0'+';';
             }
-            Log.d("LOG WRITE",Integer.toString(id));
+            Log.d("LOG WRITE",token);
             CallDB.updateTable_log(id,token,log);
 
            return log;

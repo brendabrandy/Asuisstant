@@ -206,6 +206,7 @@ public class MeetingFragment extends Fragment {
                 cal.setTime(sdf.parse(ListObject.get(position).getShowCaseDateTime()));
                 jsonMonth.setText(new DateFormatSymbols().getMonths()[cal.get(Calendar.MONTH)]);
                 jsonDay.setText(Integer.toString(cal.get(Calendar.DAY_OF_MONTH)));
+                jsonTime.setText(ListObject.get(position).getShowCaseDateTime());
                 if (cal.before(cal2)){
                     if (ListObject.get(position).getShowCaseDone() == true){
                         jsonMonth.setTextColor(Color.GREEN);
