@@ -21,7 +21,7 @@ public class Broadcast extends AppCompatActivity {
     }
 
     public void activitysubmit(View view){
-        String broadcast = ((EditText)findViewById(R.id.activity_write)).getText().toString();
+        String broadcast = ((EditText)findViewById(R.id.log_write)).getText().toString();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

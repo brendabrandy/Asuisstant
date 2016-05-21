@@ -77,8 +77,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         if(cursor.getCount() > 0){
-            user.put("name", cursor.getString(1));
-            user.put("password", cursor.getString(2));
+            user.put("name", cursor.getString(0));
+            user.put("password", cursor.getString(1));
         }
         cursor.close();
         db.close();

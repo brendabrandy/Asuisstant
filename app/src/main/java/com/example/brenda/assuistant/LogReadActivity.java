@@ -37,7 +37,7 @@ public class LogReadActivity extends AppCompatActivity{
     ProgressDialog dialog;
     TextView notesText;
     ListView listView;
-    String notes;
+    String ticker_sentiment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,8 @@ public class LogReadActivity extends AppCompatActivity{
         String datetime = extras.getString("DateTime");
         String client = extras.getString("Client");
         String rep = extras.getString("Person");
-
+        ticker_sentiment = extras.getString("Ticker_sentiment");
+        String notes = extras.getString("notes");
         dateLogRead = (TextView) findViewById(R.id.dateLogRead);
         clientLogRead = (TextView) findViewById(R.id.clientLogRead);
         repLogRead = (TextView) findViewById(R.id.repLogRead);
@@ -59,11 +60,8 @@ public class LogReadActivity extends AppCompatActivity{
         dateLogRead.setText(datetime);
         clientLogRead.setText(client);
         repLogRead.setText(rep);
+        notesText.setText(notes);
 
-        dialog = new ProgressDialog(this);
-        dialog.setIndeterminate(true);
-        dialog.setCancelable(false);
-        dialog.setMessage("Loading. Please wait...");
         //String poop = CallDB.getTable("log");
         //Log.d("LOG READ",poop);
         new logReadTask().execute();
@@ -75,6 +73,10 @@ public class LogReadActivity extends AppCompatActivity{
         protected void onPreExecute() {
             //Shows dialog box in async task
             super.onPreExecute();
+            dialog = new ProgressDialog(LogReadActivity.this);
+            dialog.setIndeterminate(true);
+            dialog.setCancelable(false);
+            dialog.setMessage("Loading. Please wait...");
             dialog.show();
         }
 
@@ -82,28 +84,15 @@ public class LogReadActivity extends AppCompatActivity{
         protected List<TestObjectSummary> doInBackground(String... params) {
             //return List of TestObjects
             List<TestObjectSummary> testObjectSummaryList = new ArrayList<>();
-            String ticker_sentiment = null;
 
-            String jsonString = CallDB.getTable("log");
-            try {
-                JSONObject reader = new JSONObject(jsonString);
-                JSONArray parentArray = reader.getJSONArray("rows");
-                JSONObject parentObject = parentArray.getJSONObject(0);
-                ticker_sentiment = parentObject.getString("ticker_sentiment");
-                String delims = "[,;]";
-                String[] tokens = ticker_sentiment.split(delims);
-                for (int i = 0; i < tokens.length; i = i+2){
-                    TestObjectSummary o = new TestObjectSummary();
-                    o.setSentiment(tokens[i+1]);
-                    o.setTicker(tokens[i]);
-                    testObjectSummaryList.add(o);
-                }
-                notes = parentObject.getString("notes");
-                Log.d("LOG READ", notes);
-
-
-            }catch(JSONException ex){
-                    ex.printStackTrace();
+            String delims = "[,;]";
+            String[] tokens = ticker_sentiment.split(delims);
+            Log.d("ASYNC TASK",tokens.toString());
+            for (int i = 0; i < tokens.length; i = i+2) {
+                TestObjectSummary o = new TestObjectSummary();
+                o.setSentiment(tokens[i + 1]);
+                o.setTicker(tokens[i]);
+                testObjectSummaryList.add(o);
             }
             return testObjectSummaryList;
         }
@@ -118,7 +107,6 @@ public class LogReadActivity extends AppCompatActivity{
             Log.d("ASYNC TASK",result.toString());
             JsonAdapterSummary myAdapter = new JsonAdapterSummary(getApplicationContext(), R.layout.listviewsummary, result);
             listView.setAdapter(myAdapter);
-            notesText.setText(notes);
 
             // TODO: set result to listView
         }

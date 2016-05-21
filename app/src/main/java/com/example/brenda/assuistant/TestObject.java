@@ -13,6 +13,26 @@ public class TestObject {
     private String showCaseClient;
     private String showCasePerson;
     private Boolean showCaseDone;
+    private String showCasetickerSent;
+
+    private String showCasenote;
+
+    public String getShowCasenote() {
+        return showCasenote;
+    }
+
+    public void setShowCasenote(String showCasenote) {
+        this.showCasenote = showCasenote;
+    }
+
+
+    public String getShowCasetickerSent() {
+        return showCasetickerSent;
+    }
+
+    public void setShowCasetickerSent(String showCasetickerSent) {
+        this.showCasetickerSent = showCasetickerSent;
+    }
 
     public Boolean getShowCaseDone() {
         return showCaseDone;
