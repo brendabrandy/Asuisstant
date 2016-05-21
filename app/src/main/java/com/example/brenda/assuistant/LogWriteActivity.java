@@ -14,6 +14,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,9 +113,62 @@ public class LogWriteActivity extends AppCompatActivity {
                 tokens3[j] = tokens2[0];
                 j += 1;
             }
+
+
+            ArrayList <String> poslist = new ArrayList<>();
+            ArrayList <String> neglist = new ArrayList<>();
+            FileReader in;
+            BufferedReader br;
+            FileReader in2;
+            BufferedReader br2;
+            try {
+                in = new FileReader("negative.txt");
+                br = new BufferedReader(in);
+                in2 = new FileReader("positive.txt");
+                br2 = new BufferedReader(in2);
+                String line;
+                while((line = br.readLine()) != null) {
+                    poslist.add(line);
+                }
+                while((line = br2.readLine()) != null) {
+                    neglist.add(line);
+                }
+            }
+            catch (IOException ex){
+            }
+            String delims3="[ .,!?;:]+";
+            String [] tokens4 = log.split(delims3);
+            int sentiment=0;
+            for(int z=0;z<tokens4.length;z++){
+                if(poslist.contains(tokens4[z])){
+                    sentiment++;
+                }
+                else if(neglist.contains(tokens4[z])) {
+                    sentiment--;
+                }
+            }
+            if (sentiment<=-2){
+                sentiment = 0;
+            }
+            else if (sentiment==-1){
+                sentiment = 1;
+            }
+            else if (sentiment==0){
+                sentiment = 2;
+            }
+            else if (sentiment==1){
+                sentiment = 3;
+            }
+            else if (sentiment==2){
+                sentiment = 4;
+            }
+            else if (sentiment>=3){
+                sentiment = 5;
+            }
+
             String token = "";
             for (int i=0;i< j;i++){
-                token+= tokens3[i]+','+'0'+';';
+                token+= tokens3[i]+','+Integer.toString(sentiment)+';';
             }
             Log.d("LOG WRITE",token);
             CallDB.updateTable_log(id,token,log);
