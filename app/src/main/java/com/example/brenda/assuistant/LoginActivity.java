@@ -20,6 +20,8 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity{
     Button btnLogin;
     EditText username;
+    String user;
+    String pass;
     EditText password;
     ProgressDialog nDialog;
 
@@ -39,7 +41,7 @@ public class LoginActivity extends AppCompatActivity{
         });
     }
 
-    public class jsonTaskLogin extends AsyncTask<String, String, Boolean > {
+    public class jsonTaskLogin extends AsyncTask<String, String, List<testObjectLogin> > {
 
         @Override
         protected void onPreExecute() {
@@ -54,30 +56,49 @@ public class LoginActivity extends AppCompatActivity{
         }
 
         @Override
-        protected Boolean doInBackground(String... params) {
+        protected List<testObjectLogin> doInBackground(String... params) {
             //return List of TestObjects
+            List <testObjectLogin> result = new ArrayList<>();
             String jsonString = CallDB.getTable("employee");
+            username = (EditText) findViewById(R.id.nameLogin);
+            password = (EditText) findViewById(R.id.passwordLogin);
             Log.d("ASYNCTASK",jsonString);
             try {
                 JSONObject reader = new JSONObject(jsonString);
                 JSONArray parentArray = reader.getJSONArray("rows");
-                //for (int i =0; i < parentArray.length(); i++){
-                //    if ()
-                //
-                //}
+                for (int i =0; i < parentArray.length(); i++){
+                    JSONObject person = parentArray.getJSONObject(i);
+                    Log.d("ASYNC TASK",person.getString("name"));
+                    testObjectLogin o = new testObjectLogin();
+                    o.setPassword(person.getString("password"));
+                    o.setUsername(person.getString("name"));
+                    result.add(o);
+                }
             }catch(JSONException ex){
                 ex.printStackTrace();
             }
-            return false;
+            return result;
         }
 
         // onPostExecute displays the results of the AsyncTask.
         @Override
-        protected void onPostExecute(Boolean result) {
+        protected void onPostExecute(List<testObjectLogin> result) {
             nDialog.dismiss();
-            if (result == true){
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(i);
+           for (testObjectLogin people:result){
+               user = username.getText().toString();
+               pass = password.getText().toString();
+               Log.d("ASYNC TASK",user);
+               Log.d("ASYNC TASK",pass);
+               Log.d("ASYNC TASK",people.getUsername());
+               Log.d("ASYNC TASK",people.getPassword());
+               if ((user.equals(people.getUsername()))&&(pass.equals(people.getPassword()))){
+
+                   DataBaseHelper db = new DataBaseHelper(getApplicationContext());
+                   db.addUser(user,pass);
+                   Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                   startActivity(i);
+                   Log.d("ASYNC TASK","Helloo!");
+               }
             }
             // TODO: set result to listView
         }
